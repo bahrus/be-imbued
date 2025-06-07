@@ -4,18 +4,72 @@ import { BE } from 'be-enhanced/BE.js';
 import {dispatchEvent as de} from 'trans-render/positractions/dispatchEvent.js';
 
 /** @import {BEConfig, IEnhancement, BEAllProps} from './ts-refs/be-enhanced/types.d.ts' */
-/** @import {Actions, PAP, AllProps, AP} from './ts-refs/be-imbued/types' */;
+/** @import {Actions, PAP, AllProps, AP, BAP} from './ts-refs/be-imbued/types' */;
 
 /**
  * @implements {Actions}
  */
-class BeIncluded extends BE {
+class BeImbued extends BE {
     /**
-     * @type {BEConfig<AP & BEAllProps, Actions & IEnhancement>}
+     * @type {BEConfig<AP & BEAllProps, Actions & IEnhancement<HTMLTemplateElement>>}
      */
     static config = {
         propInfo:{
-            in: {}
+            imbueRules: {},
+            nodesToImbue: {},
+        },
+        compacts:{
+            when_imbueRules_changes_call_hydrate: 0,
+        },
+        actions:{
+            imbue:{
+                ifAllOf: ['nodesToImbue', 'imbueRules'],
+            }
         }
+    }
+
+    /**
+     * @type {WeakSet<Element>}
+     */
+    #alreadyProcessed = new WeakSet();
+
+
+
+    /**
+     * 
+     * @param {BAP} self 
+     * @returns 
+     */
+    async hydrate(self){
+        const {enhancedElement} = self;
+        const nodesToImbue = Array.from(enhancedElement.content.children);
+        return /* @type {PAP} */ ({
+            nodesToImbue
+        });
+    }
+
+    /**
+     * 
+     * @param {BAP} self 
+     * @returns 
+     */
+    async imbue(self){
+        const { enhancedElement, imbueRules, nodesToImbue } = self;
+        const {find} = await import('trans-render/dss/find.js');
+        const {beKindred}  = await import('mount-observer/slotkin/beKindred.js');
+        for(const imbueRule of imbueRules){
+            const {remoteSpecifier} = imbueRule;
+            const target = await find(enhancedElement, remoteSpecifier);
+            for(const node of nodesToImbue){
+                if(this.#alreadyProcessed.has(node)) continue;
+                this.#alreadyProcessed.add(node);
+                beKindred(target, node)
+            }  
+        }
+            
+        const newNodesToImbue = nodesToImbue.filter(node => !this.#alreadyProcessed.has(node));
+        return /* @type {PAP} */ ({
+            nodesToImbue: newNodesToImbue
+        })
     }
 }
