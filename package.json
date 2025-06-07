@@ -1,0 +1,20 @@
+{
+  "name": "be-imbued",
+  "version": "0.0.0",
+  "description": "be-imbued allows sprinkling of DOM",
+  "homepage": "https://github.com/bahrus/be-imbued#readme",
+  "bugs": {
+    "url": "https://github.com/bahrus/be-imbued/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahrus/be-imbued.git"
+  },
+  "license": "MIT",
+  "author": "anderson.bruce.b@gmail.com",
+  "type": "module",
+  "main": "be-imbued.js",
+  "scripts": {
+    "test": "playwright test"
+  }
+}
