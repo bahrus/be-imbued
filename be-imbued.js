@@ -73,3 +73,6 @@ class BeImbued extends BE {
         })
     }
 }
+
+await BeImbued.bootUp();
+export { BeImbued };

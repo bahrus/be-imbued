@@ -15,6 +15,7 @@ const rssTors = ['remoteSpecifierString', 'remoteSpecifier'];
  */
 export const emc = {
     base: 'be-imbued',
+    //enhancedElementInstanceOf: HTMLTemplateElement,
     map: {
         '0.0': {
             instanceOf: 'Object$entences',

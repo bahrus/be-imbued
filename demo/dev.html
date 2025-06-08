@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 2a</title>
+    <!-- #include virtual="/imports.html" -->
+    <script type=module>
+        import '/emc.js';
+    </script>
+</head>
+<body>
+    <a href="https://www.youtube.com/watch?v=ucX9hVCQT_U" target="_blank">Friday I'm in Love</a>
+    <button onclick="updateDaysOfWeek()">Wi not trei a holiday in Sweeden this yer</button>
+    <script>
+        function updateDaysOfWeek(){
+            const html = String.raw;
+            daysOfWeek.innerHTML = html `
+                <span itemprop=day1>måndag</span>
+                <span itemprop=day2>tisdag</span>
+                <span itemprop=day3>onsdag</span>
+                <span itemprop=day4>torsdag</span>
+                <span itemprop=day5>fredag</span>
+                <span itemprop=day6>lördag</span>
+                <span itemprop=day7>söndag</span>
+            `;
+        }
+    </script>
+
+    <div itemscope id=love>
+        <div class=stanza id=Opening>
+            <div>I don't care if <span itemprop=day1></span>'s blue</div>
+            <div><span itemprop=day2></span>'s gray and <span itemprop=day3>Wednesday</span> too</div>
+            <div><span itemprop=day4></span> I don't care about you</div>
+            <div id=Friday>
+                <div>It's <span itemprop=day5></span> I'm in love</div>
+            </div>
+        </div>
+
+        <div class=stanza id=art>
+            <div><span itemprop=day1></span> you can fall apart</div>
+            <div><span itemprop=day2></span> <span itemprop=day3></span> break my heart</div>
+            <div>Oh, <span itemprop=day4></span> doesn't even start</div>
+            <template src=#Friday></template>
+        </div>
+
+        <div class="stanza" id=weekend>
+            <div><span itemprop=day6></span> wait</div>
+            <div>And <span itemprop=day7></span> always comes too late</div>
+            <div>But <span itemprop=day5></span> never hesitate</div>
+        </div>
+
+        <div class="stanza">
+            <div>I don't care if <span itemprop=day1></span>'s black</div>
+            <div><span itemprop=day2></span>, <span itemprop=day3></span> heart attack</div>
+            <div><span itemprop=day4></span> never looking back</div>
+            <template src=#Friday></template>
+        </div>
+
+        <div class="stanza">
+            <div><span itemprop=day1></span> you can hold your head</div>
+            <div><span itemprop=day2></span>, <span itemprop=day3></span> stay in bed</div>
+            <div>Or <span itemprop=day4></span> watch the walls instead</div>
+            <template src=#Friday></template> 
+        </div>
+
+        <template src=#weekend></template>
+
+        <div class="stanza">
+            <div>Dressed up to the eyes</div>
+            <div>It's a wonderful surprise</div>
+            <div>To see your shoes and your spirits rise</div>
+            <div>Throwing out your frown</div>
+            <div>And just smiling at the sound</div>
+            <div>And as sleek as a shriek</div>
+            <div>Spinning round and round</div>
+            <div>Always take a big bite</div>
+            <div>It's such a gorgeous sight</div>
+            <div>To see you in the middle of the night</div>
+            <div>You can never get enough</div>
+            <div>Enough of this stuff</div>
+            <template src=#Friday></template>
+        </div>
+
+        <template src=#Opening></template>
+
+        <template src=#art></template>
+        
+    </div>
+    
+
+
+
+
+
+
+
+
+    <style>
+        .stanza{
+            padding-top: 20px;
+        }
+    </style>
+
+
+    <template id=daysOfWeek 
+        be-imbued="in love"
+    >
+        <span itemprop=day1>Monday</span>
+        <span itemprop=day2>Tuesday</span>
+        <span itemprop=day3>Wednesday</span>
+        <span itemprop=day4>Thursday</span>
+        <span itemprop=day5>Friday</span>
+        <span itemprop=day6>Saturday</span>
+        <span itemprop=day7>Sunday</span>
+    </template>
+
+
+</body>
+</html>
