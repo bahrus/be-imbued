@@ -3,8 +3,10 @@ import { propInfo, rejected, resolved } from 'be-enhanced/cc.js';
 import { BE } from 'be-enhanced/BE.js';
 import {dispatchEvent as de} from 'trans-render/positractions/dispatchEvent.js';
 
+
 /** @import {BEConfig, IEnhancement, BEAllProps} from './ts-refs/be-enhanced/types.d.ts' */
 /** @import {Actions, PAP, AllProps, AP, BAP} from './ts-refs/be-imbued/types' */;
+/** @import {IMountObserver} from './ts-refs/mount-observer/types' */
 
 /**
  * @implements {Actions}
@@ -37,6 +39,11 @@ class BeImbued extends BE {
      * @type {MutationObserver}
      */
     #mutationObserver;
+
+    /**
+     * @type {Array<[WeakRef<Element>, IMountObserver]>}
+     */
+    #kindredObservers = [];
 
     /**
      * 
@@ -74,6 +81,11 @@ class BeImbued extends BE {
         if(this.#mutationObserver){
             this.#mutationObserver.disconnect();
         }
+        for(const mo of this.#kindredObservers){
+            const target = mo[0].deref();
+            if(target === undefined) continue;
+            mo[1].disconnect(target);
+        }
     }
 
     /**
@@ -87,11 +99,12 @@ class BeImbued extends BE {
         const {beKindred}  = await import('mount-observer/slotkin/beKindred.js');
         for(const imbueRule of imbueRules){
             const {remoteSpecifier} = imbueRule;
-            const target = await find(enhancedElement, remoteSpecifier);
+            
+            const target =  /**  @type {Element} */  (await find(enhancedElement, remoteSpecifier));
             for(const node of nodesToImbue){
                 if(this.#alreadyProcessed.has(node)) continue;
                 this.#alreadyProcessed.add(node);
-                beKindred(target, node)
+                this.#kindredObservers.push([new WeakRef(target), beKindred(target, node)]);
             }  
         }
             
