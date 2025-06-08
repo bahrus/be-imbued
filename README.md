@@ -1,4 +1,4 @@
-# be-imbued (🧧) [TODO]
+# be-imbued (🧧) [WIP]
 
 
 *be-imbued* enables sprinkling DOM into targeted sections of a DOM tree.  
@@ -217,7 +217,7 @@ In some cases, we want to "ignore" certain attributes in our match, and "insert"
 
 -i can be a space delimited list of attributes to ignore during the query match / insert during the merge.
 
-The "be-imbued-vigilantly" means to add a mutation observer to the element with id "love" and watch for any new elements that get added that match the child "selector".
+The "be-imbued-vigilantly" means to add a mutation observer to the element with id "love" and watch for any new elements that get added that match the child "selector". [TODO]
 
 Since "be-imbued" is a rather lengthy attribute to use as a "stem", a shorter name can be used in less formal environments, where conflicts between different libraries are easy to avoid.  Tis package contains a reference that can be used for brevity:  🥰.
 
