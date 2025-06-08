@@ -233,6 +233,10 @@ Since "be-imbued" is a rather lengthy attribute to use repeatedly, a shorter nam
 
 ```
 
+## How be-imbued minimizes overlapping matches [TODO]
+
+If a new child is added to the template, *be-imbued* checks for any previous children that match the new child, and disconnects/stops that old child from getting applied.
+
 ## Example 2 in detail
 
 To see the full example described above in detail, please expand below
