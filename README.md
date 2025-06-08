@@ -217,9 +217,7 @@ In some cases, we want to "ignore" certain attributes in our match, and "insert"
 
 -i can be a space delimited list of attributes to ignore during the query match / insert during the merge.
 
-
-
-Since "be-imbued" is a rather lengthy attribute to use as a "stem", a shorter name can be used in less formal environments, where conflicts between different libraries are easy to avoid.  Tis package contains a reference that can be used for brevity:  🥰.
+Since "be-imbued" is a rather lengthy attribute to use repeatedly, a shorter name can be used in less formal environments, where conflicts between different libraries are easy to avoid.  This package contains a reference that can be used to meet this desire for brevity:  🧧.
 
 ```html
 <div itemscope id=love>
@@ -229,8 +227,8 @@ Since "be-imbued" is a rather lengthy attribute to use as a "stem", a shorter na
 
 ...
 
-<template 🥰="in love" 🥰-vigilantly>
-    <data value=true itemprop=todayIsFriday -i="value ">It's Friday</data>
+<template 🧧="in #love">
+    <data value=true itemprop=todayIsFriday -i="value">It's Friday</data>
 </template>
 
 ```
@@ -244,73 +242,47 @@ To see the full example described above in detail, please expand below
 
 ```html
 <a href="https://www.youtube.com/watch?v=ucX9hVCQT_U" target="_blank">Friday I'm in Love</a>
-<button id="changeDays" onclick="updateModel()">Wi not trei a holiday in Sweeden this yer</button>
-<script>
-    function updateModel(){
-        const model = {
-            day1: 'måndag', day2: 'tisdag', day3: 'onsdag', day4: 'torsdag', day5: 'fredag',
-            day6: 'lördag', day7: 'söndag',
-        };
-        Object.assign(song.beEnhanced.beInclusive.model, model);
-    }
-</script>
-<template id="Friday">
-    <div>It's <slot name=day5></slot> I'm in love</div>
-</template>
-<template id="Opening">
-    <div class=stanza>
-        <div>I don't care if <slot name=day1></slot>'s blue</div>
-        <div><slot name=day2></slot>'s gray and <slot name=day3></slot> too</div>
-        <div><slot name=day4></slot> I don't care about you</div>
-        <template src=#Friday>
-            <slot slot=day5 name=day5></slot>
-        </template> 
-    </div>
-</template>
+<button onclick="updateDaysOfWeek()">Wi not trei a holiday in Sweeden this yer</button>
 
-<template id="love">
-    <template src=#Opening>
-        <slot slot=day1 name=day1></slot>
-        <slot slot=day2 name=day2></slot>
-        <slot slot=day3 name=day3></slot>
-        <slot slot=day4 name=day4></slot>
-        <slot slot=day5 name=day5></slot>
-    </template> 
-    <div class="stanza">
-        <div><slot name=day1></slot> you can fall apart</div>
-        <div><slot name=day2></slot> <slot name=day3></slot> break my heart</div>
-        <div>Oh, <slot name=day4></slot> doesn't even start</div>
-        <template src=#Friday>
-            <slot slot=day5 name=day5></slot>
-        </template> 
+<div itemscope id=love>
+    <div class=stanza id=Opening>
+        <div>I don't care if <span itemprop=day1></span>'s blue</div>
+        <div><span itemprop=day2></span>'s gray and <span itemprop=day3>Wednesday</span> too</div>
+        <div><span itemprop=day4></span> I don't care about you</div>
+        <div id=Friday>
+            <div>It's <span itemprop=day5></span> I'm in love</div>
+        </div>
     </div>
-    <div class="stanza">
-        <div><slot name=day6></slot> wait</div>
-        <div>And <slot name=day7></slot> always comes too late</div>
-        <div>But <slot name=day5></slot> never hesitate</div>
+
+    <div class=stanza id=art>
+        <div><span itemprop=day1></span> you can fall apart</div>
+        <div><span itemprop=day2></span> <span itemprop=day3></span> break my heart</div>
+        <div>Oh, <span itemprop=day4></span> doesn't even start</div>
+        <template src=#Friday></template>
+    </div>
+
+    <div class="stanza" id=weekend>
+        <div><span itemprop=day6></span> wait</div>
+        <div>And <span itemprop=day7></span> always comes too late</div>
+        <div>But <span itemprop=day5></span> never hesitate</div>
     </div>
 
     <div class="stanza">
-        <div>I don't care if <slot name=day1></slot>'s black</div>
-        <div><slot name=day2></slot>, <slot name=day3></slot> heart attack</div>
-        <div><slot name=day4></slot> never looking back</div>
-        <template src=#Friday>
-            <slot slot=day5 name=day5></slot>
-        </template> 
+        <div>I don't care if <span itemprop=day1></span>'s black</div>
+        <div><span itemprop=day2></span>, <span itemprop=day3></span> heart attack</div>
+        <div><span itemprop=day4></span> never looking back</div>
+        <template src=#Friday></template>
     </div>
+
     <div class="stanza">
-        <div><slot name=day1></slot> you can hold your head</div>
-        <div><slot name=day2></slot>, <slot name=day3></slot> stay in bed</div>
-        <div>Or <slot name=day4></slot> watch the walls instead</div>
-        <template src=#Friday>
-            <slot slot=day5 name=day5></slot>
-        </template> 
+        <div><span itemprop=day1></span> you can hold your head</div>
+        <div><span itemprop=day2></span>, <span itemprop=day3></span> stay in bed</div>
+        <div>Or <span itemprop=day4></span> watch the walls instead</div>
+        <template src=#Friday></template> 
     </div>
-    <div class="stanza">
-        <div><slot name=day6></slot> wait</div>
-        <div>And <slot name=day7></slot> always comes too late</div>
-        <div>But <slot name=day5></slot> never hesitate</div>
-    </div>
+
+    <template src=#weekend></template>
+
     <div class="stanza">
         <div>Dressed up to the eyes</div>
         <div>It's a wonderful surprise</div>
@@ -324,55 +296,48 @@ To see the full example described above in detail, please expand below
         <div>To see you in the middle of the night</div>
         <div>You can never get enough</div>
         <div>Enough of this stuff</div>
-        <div>It's <slot name=day5></slot></div>
-        <div>I'm in love</div>
+        <template src=#Friday></template>
     </div>
-    <template src=#Opening>
-        <slot slot=day1 name=day1></slot>
-        <slot slot=day2 name=day2></slot>
-        <slot slot=day3 name=day3></slot>
-        <slot slot=day4 name=day4></slot>
-        <slot slot=day5 name=day5></slot>
-    </template> 
-    <div class="stanza">
-        <div><slot name=day1></slot> you can fall apart</div>
-        <div><slot name=day2></slot>, <slot name=day3></slot> break my heart</div>
-        <div><slot name=day4></slot> doesn't even start</div>
-        <template src=#Friday>
-            <slot slot=day5 name=day5></slot>
-        </template> 
-    </div>
-    <style>
-        .stanza{
+
+    <template src=#Opening></template>
+
+    <template src=#art></template>
+    
+</div>
+
+<style>
+    .stanza{
         padding-top: 20px;
     }
 </style>
+
+
+<template id=daysOfWeek 
+    be-imbued="in love"
+>
+    <span itemprop=day1>Monday</span>
+    <span itemprop=day2>Tuesday</span>
+    <span itemprop=day3>Wednesday</span>
+    <span itemprop=day4>Thursday</span>
+    <span itemprop=day5>Friday</span>
+    <span itemprop=day6>Saturday</span>
+    <span itemprop=day7>Sunday</span>
 </template>
 
-<template id=song 
-    be-imbued='{
-        "of": "#love",
-        "slotMap": {"span": "|"},
-        "xform": {
-            "| day1": 0,
-            "| day2": 0,
-            "| day3": 0,
-            "| day4": 0,
-            "| day5": 0,
-            "| day6": 0,
-            "| day7": 0
-        },
-        "initModel": {}
-    }'
->
-    <span slot=day1 init-val-from="textContent">Monday</span>
-    <span slot=day2 init-val-from="textContent">Tuesday</span>
-    <span slot=day3 init-val-from="textContent">Wednesday</span>
-    <span slot=day4 init-val-from="textContent">Thursday</span>
-    <span slot=day5 init-val-from="textContent">Friday</span>
-    <span slot=day6 init-val-from="textContent">Saturday</span>
-    <span slot=day7 init-val-from="textContent">Sunday</span>
-</template>
+<script>
+    function updateDaysOfWeek(){
+        const html = String.raw;
+        daysOfWeek.innerHTML = html `
+            <span itemprop=day1>måndag</span>
+            <span itemprop=day2>tisdag</span>
+            <span itemprop=day3>onsdag</span>
+            <span itemprop=day4>torsdag</span>
+            <span itemprop=day5>fredag</span>
+            <span itemprop=day6>lördag</span>
+            <span itemprop=day7>söndag</span>
+        `;
+    }
+</script>
 ```
 
 

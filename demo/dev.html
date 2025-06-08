@@ -13,20 +13,6 @@
 <body>
     <a href="https://www.youtube.com/watch?v=ucX9hVCQT_U" target="_blank">Friday I'm in Love</a>
     <button onclick="updateDaysOfWeek()">Wi not trei a holiday in Sweeden this yer</button>
-    <script>
-        function updateDaysOfWeek(){
-            const html = String.raw;
-            daysOfWeek.innerHTML = html `
-                <span itemprop=day1>måndag</span>
-                <span itemprop=day2>tisdag</span>
-                <span itemprop=day3>onsdag</span>
-                <span itemprop=day4>torsdag</span>
-                <span itemprop=day5>fredag</span>
-                <span itemprop=day6>lördag</span>
-                <span itemprop=day7>söndag</span>
-            `;
-        }
-    </script>
 
     <div itemscope id=love>
         <div class=stanza id=Opening>
@@ -107,6 +93,21 @@
         <span itemprop=day6>Saturday</span>
         <span itemprop=day7>Sunday</span>
     </template>
+
+    <script>
+        function updateDaysOfWeek(){
+            const html = String.raw;
+            daysOfWeek.innerHTML = html `
+                <span itemprop=day1>måndag</span>
+                <span itemprop=day2>tisdag</span>
+                <span itemprop=day3>onsdag</span>
+                <span itemprop=day4>torsdag</span>
+                <span itemprop=day5>fredag</span>
+                <span itemprop=day6>lördag</span>
+                <span itemprop=day7>söndag</span>
+            `;
+        }
+    </script>
 
 </body>
 </html>
