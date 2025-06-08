@@ -33,7 +33,10 @@ class BeImbued extends BE {
      */
     #alreadyProcessed = new WeakSet();
 
-
+    /**
+     * @type {MutationObserver}
+     */
+    #mutationObserver;
 
     /**
      * 
@@ -42,10 +45,18 @@ class BeImbued extends BE {
      */
     async hydrate(self){
         const {enhancedElement} = self;
-        const nodesToImbue = Array.from(enhancedElement.content.children);
+        const {content} = enhancedElement;
+        const nodesToImbue = Array.from(content.children);
+        const config = { attributes: true, childList: true, subtree: true };
         return /* @type {PAP} */ ({
             nodesToImbue
         });
+    }
+
+    detachedCallback(){
+        if(this.#mutationObserver){
+            this.#mutationObserver.disconnect();
+        }
     }
 
     /**
