@@ -116,6 +116,18 @@
         <span itemprop=day7>Sunday</span>
     </template>
 
-
+    <script>
+        setTimeout(() => {
+            daysOfWeek.innerHTML = String.raw `
+                <span itemprop=day1>måndag</span>
+                <span itemprop=day2>tisdag</span>
+                <span itemprop=day3>onsdag</span>
+                <span itemprop=day4>torsdag</span>
+                <span itemprop=day5>fredag</span>
+                <span itemprop=day6>lördag</span>
+                <span itemprop=day7>söndag</span>
+            `;
+        }, 2000);
+    </script>
 </body>
 </html>
