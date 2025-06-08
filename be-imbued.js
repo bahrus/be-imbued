@@ -51,17 +51,12 @@ class BeImbued extends BE {
         const callback = (mutationList, observer) => {
             for (const mutation of mutationList) {
                 const {addedNodes} = mutation;
+                const addedElements = Array.from(addedNodes).filter(x => x instanceof Element);
                 const newNodesToImbue = [...self.nodesToImbue];
-                for(const addedNode of addedNodes){
+                for(const addedNode of addedElements){
                     newNodesToImbue.push(addedNode);
                 }
                 self.nodesToImbue = newNodesToImbue;
-                //console.log({target});
-                // if (mutation.type === "childList") {
-                // console.log("A child node has been added or removed.");
-                // } else if (mutation.type === "attributes") {
-                // console.log(`The ${mutation.attributeName} attribute was modified.`);
-                // }
             }
             
         };
