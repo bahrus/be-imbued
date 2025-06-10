@@ -196,6 +196,7 @@ What this does:
 
 1.  Searches within the DOM element with id "love" for elements whose attributes match the attributes of the child elements of the template element.
 2.  When a match is found, replaces/inserts the children of the target match with the children of the template child.
+3.  Monitors for changes to the children of the of the adorned template element, and when new children are introduced, merges those into "love" target.
 
 Finessing the merge
 
