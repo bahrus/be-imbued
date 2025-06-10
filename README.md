@@ -318,7 +318,7 @@ To see the full example described above in detail, please expand below
 
 
 <template id=daysOfWeek 
-    be-imbued="in love"
+    be-imbued="in #love"
 >
     <span itemprop=day1>Monday</span>
     <span itemprop=day2>Tuesday</span>
