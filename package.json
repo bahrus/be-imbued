@@ -6,15 +6,15 @@
   "bugs": {
     "url": "https://github.com/bahrus/be-imbued/issues"
   },
-    "dependencies": {
-    "be-enhanced": "0.0.179",
-    "be-hive": "0.0.260",
-    "mount-observer": "0.0.71",
-    "trans-render": "0.0.905"
+  "dependencies": {
+    "be-enhanced": "0.0.189",
+    "be-hive": "0.0.268",
+    "mount-observer": "0.0.112",
+    "trans-render": "0.0.961"
   },
   "devDependencies": {
-    "@playwright/test": "1.52.0",
-    "ssi-server": "0.0.1"
+    "@playwright/test": "1.57.0",
+    "spa-ssi": "0.0.26"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   "main": "be-imbued.js",
   "scripts": {
     "test": "playwright test",
-    "serve": "python3 ./node_modules/ssi-server/ssi_server.py",
+    "serve": "node ./node_modules/spa-ssi/serve.js",
     "safari": "npx playwright wk http://localhost:8000",
     "update": "ncu -u && npm install"
   }
