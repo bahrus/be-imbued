@@ -3,12 +3,10 @@ import { BeHive, seed, MountObserver } from 'be-hive/be-hive.js';
 /** @import {EMC} from './ts-refs/trans-render/be/types' */
 /** @import {Actions, PAP, AllProps, AP} from './ts-refs/be-imbued/types' */;
 
-const inRemoteSpecifierString = String.raw `^(i|I)n (?<remoteSpecifierString>.*)`;
+const inRemoteSpecifierString = String.raw `^(i|I)n (?<idref>.*)`;
 
-/**
- * @type {[string, string]}
- */
-const rssTors = ['remoteSpecifierString', 'remoteSpecifier'];
+
+
 
 /**
  * @type {EMC<any, AP>}
@@ -25,7 +23,6 @@ export const emc = {
                     {
                         regExp: inRemoteSpecifierString,
                         defaultVals: {},
-                        dssKeys: [rssTors]
                     }
 
                 ]
@@ -34,10 +31,7 @@ export const emc = {
     },
     enhPropKey: 'beImbued',
     importEnh: async () => {
-        const { BeImbued } = 
-        /** @type {{new(): IEnhancement<Element>}} */ 
-        /** @type {any} */
-        (await import('./be-imbued.js'));
+        const { BeImbued } = await import('./be-imbued.js');
         return BeImbued;
     }
 };

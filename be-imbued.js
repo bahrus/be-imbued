@@ -1,7 +1,5 @@
 // @ts-check
-import { propInfo, rejected, resolved } from 'be-enhanced/cc.js';
 import { BE } from 'be-enhanced/BE.js';
-import {dispatchEvent as de} from 'trans-render/positractions/dispatchEvent.js';
 
 
 /** @import {BEConfig, IEnhancement, BEAllProps} from './ts-refs/be-enhanced/types.d.ts' */
@@ -36,7 +34,7 @@ class BeImbued extends BE {
     #alreadyProcessed = new WeakSet();
 
     /**
-     * @type {MutationObserver}
+     * @type {MutationObserver | undefined}
      */
     #mutationObserver;
 
@@ -95,12 +93,12 @@ class BeImbued extends BE {
      */
     async imbue(self){
         const { enhancedElement, imbueRules, nodesToImbue } = self;
-        const {find} = await import('trans-render/dss/find.js');
         const {beKindred}  = await import('mount-observer/slotkin/beKindred.js');
+        const rn = /** @type {Document | ShadowRoot} */ (enhancedElement.getRootNode());
         for(const imbueRule of imbueRules){
-            const {remoteSpecifier} = imbueRule;
+            const {idref} = imbueRule;
             
-            const target =  /**  @type {Element} */  (await find(enhancedElement, remoteSpecifier));
+            const target = rn.getElementById(idref);
             for(const node of nodesToImbue){
                 if(this.#alreadyProcessed.has(node)) continue;
                 this.#alreadyProcessed.add(node);
